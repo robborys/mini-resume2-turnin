@@ -20,9 +20,77 @@
 </head>
 
 <body>
-  <mini-resume></mini-resume>
+
+  <div class="buttons">
+
+  <button class="changecolor">CHANGE COLOR </button>
+  <button class="duplicate">DUPLICATE </button>
+  <button class="newtitle">NEW TITLE </button>
+  <button class="delete">DELETE </button>
+
+  </div>
+
+
+  
+  <div id="app">
+    <mini-resume>
+      <div slot="infoslot"> <h4>Placeholder</h4></div>
+      <div slot="skillslot"> <h4>Placeholder</h4></div>
+      <div slot="schoolslot"> <h4>Placeholder</h4></div>
+    </mini-resume>
+  </div>
+
+
+
+
+
+
+
+
+
 
   <script type="module" src="./src/mini-resume.js"></script>
+
+
+  <script>
+
+document.querySelector(".delete").addEventListener("click", function(e) {
+  const currcard = document.querySelector(".mainframe");
+  document.body.removeChild(currcard);
+});
+
+document.querySelector(".duplicate").addEventListener("click", function(e) {
+  const currcard = document.querySelector(".mainframe");
+  let newcard = currcard.cloneNode(true);
+  document.body.appendChild(newcard);
+});
+
+document.querySelector(".newtitle").addEventListener("click", function(e) {
+  const currtitle = document.querySelectorAll(".name-header");
+  for (var i = 0; i < currtitle.length; i++)
+  {
+      currtitle[i].innerHTML = "SOMETHING ELSE";
+  }
+});
+
+
+
+document.querySelector(".changecolor").addEventListener("click", function (e) {
+  const currcolor = document.querySelectorAll(".mainframe");
+  for (var i = 0; i < currcolor.length; i++){
+    if (currcolor[i].style.backgroundColor == "gray")
+    {
+      currcolor[i].style.backgroundColor = "pink";
+    }
+    else
+    {
+      currcolor[i].style.backgroundColor = "gray";
+    }
+  }
+});
+
+
+  </script>
 </body>
 
 </html>
