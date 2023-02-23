@@ -49,18 +49,18 @@
 
 
 
-  <script type="module" src="./src/mini-resume.js"></script>
+<script type="module" src="./src/mini-resume.js"></script>
 
 
-  <script>
+<script>
 
 document.querySelector(".delete").addEventListener("click", function(e) {
-  const currcard = document.querySelector(".mainframe");
+  const currcard = document.querySelector("mini-resume");
   document.body.removeChild(currcard);
 });
 
 document.querySelector(".duplicate").addEventListener("click", function(e) {
-  const currcard = document.querySelector(".mainframe");
+  const currcard = document.querySelector("mini-resume");
   let newcard = currcard.cloneNode(true);
   document.body.appendChild(newcard);
 });
@@ -76,7 +76,7 @@ document.querySelector(".newtitle").addEventListener("click", function(e) {
 
 
 document.querySelector(".changecolor").addEventListener("click", function (e) {
-  const currcolor = document.querySelectorAll(".mainframe");
+  const currcolor = document.querySelectorAll("mini-resume");
   for (var i = 0; i < currcolor.length; i++){
     if (currcolor[i].style.backgroundColor == "gray")
     {

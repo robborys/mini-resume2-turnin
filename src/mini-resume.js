@@ -50,8 +50,6 @@ static get styles(){
 
 
 
-
-
     `;
   }
 
