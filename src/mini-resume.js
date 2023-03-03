@@ -1,7 +1,7 @@
 import { LitElement, html, css } from 'lit';
 import "@lrnwebcomponents/meme-maker/meme-maker.js";
 
-const profpic = new URL('../Desktop/prof-pic.png', import.meta.url).href;
+//const profpic = new URL('../Desktop/prof-pic.png', import.meta.url).href;
 
 export class MiniResume extends LitElement {
 
