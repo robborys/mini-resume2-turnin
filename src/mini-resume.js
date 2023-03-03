@@ -13,6 +13,12 @@ static properties = {
   skills: { type: String },
   workexperience: { type: String },
   relativeschoolwork: { type: String },
+  infotag: {type: String},
+  imagetoptext: {type: String},
+  imagebottomtext: {type: String},
+  newColor: {type: String, reflect: true, attribute: 'new-color'},
+  shadowEnable: {type: Boolean, reflect: true, attribute: "shadow-enable",},
+  opened: {type: Boolean, reflect: true},
   };
 
 static get styles(){
@@ -20,14 +26,23 @@ static get styles(){
 
 .mainframe
 {
-  background: gray;
+  background: #2f3e46;
   border: 5px solid black;
   width: 300px;
 }
-
+:host([shadow-enable]) .mainframe{
+      box-shadow: 2px 2px 15px red;
+      margin: 12px;
+    }
 .name-header
 {
   text-align: center;
+  color: #cad2c5;
+}
+.name-header h1:hover{
+    color: lightsteelblue;
+    font-style: italic;
+    
 }
 
 .profilepic
@@ -40,16 +55,37 @@ static get styles(){
 .school-box
 {
   text-align: center;
+  color: #e0e1dd;
+}
+.school-box :hover{
+      color: lightsteelblue;
+      font-style: italic;
 }
 
 .info-box
 {
   border: 3px solid black;
   padding-left: 10px;
+  color: #e0e1dd;
 }
 
+:host([shadow-enable]) .mainframe{
+      box-shadow: 10px 10px 10px lightsteelblue;
+      margin: 10px;
+    }
 
-
+    :host([new-color="blue"]) .mainframe{
+      background-color: var(--mini-resume-new-color, blue);
+    }
+    :host([new-color="red"]) .mainframe{
+      background-color: var(--mini-resume-new-color, red);
+    }
+    :host([new-color="pink"]) .mainframe{
+      background-color: var(--mini-resume-new-color, pink);
+    }
+     :host([new-color="green"]) .mainframe{
+      background-color: var(--mini-resume-new-color, green);
+    }
     `;
   }
 
@@ -67,6 +103,30 @@ static get styles(){
     this.skills = "Insert Skills Here";
     this.workexperience = "Worked at Example Inc."; 
     this.relativeschoolwork = "Studied examples in these classes...";
+    this.infotag = "Extra Info";
+    this.newColor = null;
+    this.shadowEnable = false;  
+    this.opened = false;
+  }
+
+  toggleEvent(){
+    const state = this.shadowRoot.querySelector('details').getAttribute('open') === '' ? true : false;
+    this.opened = state;
+  }
+
+  updated(changedProperties){
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === 'opened'){
+        this.dispatchEvent(new CustomEvent('opened-changed', 
+          { 
+            composed: true,
+            bubbles: true,
+            cancelable: false,
+            detail: { value: this[propName] } 
+          }));
+        console.log(`${propName} changed. oldValue: ${oldValue}`);
+      };
+    });
   }
 
 
@@ -74,34 +134,22 @@ static get styles(){
   render() {
     return html`
 
-
-
-
-
-
-
-
   <div class="mainframe">
   
   <div class="name-header">
     <h1>${this.name}</h1>
   </div>
 
-  
   <div class="profilepic-box">
     <div class="profilepic">
     <meme-maker 
     image-url=${this.profilepicture}
-    top-text="Example" bottom-text="Image">
+    top-text=${this.imagetoptext} bottom-text=${this.imagebottomtext}>
   </meme-maker>
     </div>
   </div>
 
 
-
-
-
-  
   <div class="school-box">
     
     <div class="user-major">
@@ -113,25 +161,13 @@ static get styles(){
     </div>
   </div>
   
-  <div class="info-box">
+  <details class="info-box" .open="${this.opened}" @toggle="${this.toggleEvent}">
 
-    <details class="userskills">
-      <summary>Skills</summary>
-      <slot name="skillslot"></slot>
-    </details>
-    
-     <details class="work-xp">
-      <summary>Work Experience</summary>
-      <slot name="infoslot"></slot>
-    </details>
-    
-     <details class="rel-school">
-      <summary>Relative Schoolwork</summary>
-      <slot name="schoolslot"></slot>
-    </details>
-    
- 
-  </div>
+  <summary>${this.infotag}</summary>
+
+  <slot name="infoslot"></slot>
+
+  </details>
   
 </div>
 
