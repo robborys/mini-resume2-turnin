@@ -29,7 +29,7 @@ static get styles(){
   background: #2f3e46;
   border: 5px solid black;
   width: 300px;
-  float:left; 
+  float: left; 
 }
 :host([shadow-enable]) .mainframe{
       box-shadow: 2px 2px 15px red;
@@ -80,13 +80,13 @@ static get styles(){
     }
 
     :host([new-color="blue"]) .mainframe{
-      background-color: var(--mini-resume-new-color, blue);
+      background-color: var(--mini-resume2-new-color, blue);
     }
      :host([new-color="green"]) .mainframe{
-      background-color: var(--mini-resume-new-color, green);
+      background-color: var(--mini-resume2-new-color, green);
     }
     :host([new-color="default"]) .mainframe{
-      background-color: var(--mini-resume-new-color, default);
+      background-color: var(--mini-resume2-new-color, default);
     }
     `;
   }
@@ -177,4 +177,4 @@ static get styles(){
   }
 
 }
-customElements.define('mini-resume', MiniResume);
+customElements.define('mini-resume2', MiniResume);

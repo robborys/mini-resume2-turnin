@@ -15,21 +15,21 @@
       font-family: sans-serif;
       background-color: #ededed;
     }
-    mini-resume[new-color="blue"]{
-      --mini-resume-new-color: navy;
+    mini-resume2[new-color="blue"]{
+      --mini-resume2-new-color: navy;
     }
-    mini-resume[new-color="green"]{
-      --mini-resume-new-color: darkgreen; 
+    mini-resume2[new-color="green"]{
+      --mini-resume2-new-color: darkgreen; 
     }
     mini-resume[new-color="default"]{
-      --mini-resume-new-color:  #2f3e46; 
+      --mini-resume2-new-color:  #2f3e46; 
     }
 
 
 
     
   </style>
-  <title>mini-resume</title>
+  <title>mini-resume2</title>
 </head>
 
 <body>
@@ -49,7 +49,7 @@
 
   
   <div id="app">
-    <mini-resume class="mainclass" shadow-enable>
+    <mini-resume2 class="mainclass" shadow-enable>
 
       <div slot="infoslot">
         <ul>
@@ -73,11 +73,11 @@
 
 
 
-    </mini-resume>
+    </mini-resume2>
   </div>
 
 
-<script type="module" src="./src/mini-resume.js"></script>
+<script type="module" src="./src/mini-resume2.js"></script>
 
 
 <script>
@@ -88,30 +88,30 @@ document.body.addEventListener('opened-changed', (e) => {
     });
  
 document.querySelector('button[data-toggle]').addEventListener('click', (e) => {
-    const userstats = document.querySelector('mini-resume');
+    const userstats = document.querySelector('mini-resume2');
     userstats.opened = !userstats.opened;
 });
 
 
 document.querySelector(".delete").addEventListener("click", function(e) {
 
-  if (document.querySelector("#app :last-child") !== "mini-resume") {
+  if (document.querySelector("#app :last-child") !== "mini-resume2") {
            document.querySelector("#app :last-child").remove();
   }
 });
 
 document.querySelector('.shadowenable').addEventListener('click', (e) => {
-      document.querySelector('mini-resume').shadowEnable = !document.querySelector('mini-resume').shadowEnable;
+      document.querySelector('mini-resume2').shadowEnable = !document.querySelector('mini-resume2').shadowEnable;
     });
 
 document.querySelector(".duplicate").addEventListener("click", function(e) {
-  const currcard = document.querySelector("mini-resume");
+  const currcard = document.querySelector("mini-resume2");
   let newcard = currcard.cloneNode(true);
   document.body.appendChild(newcard);
 });
 
 document.querySelector('.newtitle').addEventListener('click', function(e) {
-const myheading = document.querySelectorAll('mini-resume');
+const myheading = document.querySelectorAll('mini-resume2');
 for (let i = 0; i < myheading.length; i++){
   if (myheading[i].name == "John Appleseed"){
     myheading[i].name = "New Name";
@@ -125,7 +125,7 @@ for (let i = 0; i < myheading.length; i++){
 document.querySelector('.changecolor').addEventListener('click', (e) => {
       const colors = ["blue", "green","default"];
       const randomColors = colors[Math.floor(Math.random() * colors.length)];
-      document.querySelector('mini-resume').newColor = randomColors;
+      document.querySelector('mini-resume2').newColor = randomColors;
     });
 
   
