@@ -44,7 +44,11 @@ static get styles(){
     font-style: italic;
     
 }
-
+@media only screen and (max-width: 600px){
+      .mainframe{
+        width: 500px;
+      }
+}
 .profilepic
 {
   display: flex;
@@ -77,14 +81,11 @@ static get styles(){
     :host([new-color="blue"]) .mainframe{
       background-color: var(--mini-resume-new-color, blue);
     }
-    :host([new-color="red"]) .mainframe{
-      background-color: var(--mini-resume-new-color, red);
-    }
-    :host([new-color="pink"]) .mainframe{
-      background-color: var(--mini-resume-new-color, pink);
-    }
      :host([new-color="green"]) .mainframe{
       background-color: var(--mini-resume-new-color, green);
+    }
+    :host([new-color="default"]) .mainframe{
+      background-color: var(--mini-resume-new-color, default);
     }
     `;
   }
@@ -97,7 +98,7 @@ static get styles(){
   constructor() {
     super();
     this.name = "John Appleseed";
-    this.profilepicture = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
+    this.profilepicture = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
     this.major = "Some Major";
     this.school = "Example University";
     this.skills = "Insert Skills Here";
@@ -144,7 +145,8 @@ static get styles(){
     <div class="profilepic">
     <meme-maker 
     image-url=${this.profilepicture}
-    top-text=${this.imagetoptext} bottom-text=${this.imagebottomtext}>
+    top-text=${this.imagetoptext} 
+    bottom-text=${this.imagebottomtext}>
   </meme-maker>
     </div>
   </div>

@@ -16,17 +16,16 @@
       background-color: #ededed;
     }
     mini-resume[new-color="blue"]{
-      --mini-resume-new-color: blue;
+      --mini-resume-new-color: navy;
     }
     mini-resume[new-color="green"]{
-      --mini-resume-new-color: green;
+      --mini-resume-new-color: darkgreen; 
     }
-    mini-resume[new-color="pink"]{
-      --mini-resume-new-color: pink;
+    mini-resume[new-color="default"]{
+      --mini-resume-new-color:  #2f3e46; 
     }
-    mini-resume[new-color="red"]{
-      --mini-resume-new-color: red;
-    }
+
+
 
     
   </style>
@@ -37,11 +36,13 @@
 
   <div class="buttons">
 
-  <button class="changecolor">CHANGE COLOR</button>
+  <button class="changecolor">COLOR TOGGLE (green / blue / default)</button>
   <button class="duplicate">DUPLICATE </button>
   <button class="newtitle">NEW TITLE </button>
   <button class="delete">DELETE </button>
   <button class="shadowenable">SHADOW ON/OFF</button>
+  <button data-toggle class="dropdowntoggle">EXTRA INFO (toggle)</button>
+
 
   </div>
 
@@ -54,17 +55,17 @@
         <ul>
           <details class="skills">
             <summary>Skills</summary>
-            <li>Placeholder skills</li>
+            <li>skills go here</li>
           </details>
 
           <details class="exp">
             <summary>Work Experience</summary>
-            <li>Placeholder work experince</li>
+            <li>work experince goes here</li>
           </details>
 
           <details class="course">
             <summary>Relevant Course Work</summary>
-            <li>Placeholder relevant coursework</li>
+            <li>relevant coursework goes here</li>
           </details>
         </ul>
       </div>
@@ -76,40 +77,21 @@
   </div>
 
 
-      <!-- <div slot="infoslot"> <h4>Placeholder</h4></div>
-      <div slot="skillslot"> <h4>Placeholder</h4></div>
-      <div slot="schoolslot"> <h4>Placeholder</h4></div> -->
-    </mini-resume>
-  </div>
-
-
-
-
-
-
-
-
-
-
 <script type="module" src="./src/mini-resume.js"></script>
 
 
 <script>
 
-////////////
-
 document.body.addEventListener('opened-changed', (e) => {
-      document.querySelector('button[data-toggle]').innerText = e.detail.value ? 'details hidden' : 'details visble';
+      document.querySelector('button[data-toggle]').innerText = e.detail.value ? 'TOGGLE DETAILS OFF' : 'TOGGLE DETAILS ON';
       console.log('opened-changed', e.detail, e.target);
     });
-
+ 
 document.querySelector('button[data-toggle]').addEventListener('click', (e) => {
-    const moreinfo = document.querySelector('mini-resume');
-    moreinfo.opened = !moreinfo.opened;
-    });
+    const userstats = document.querySelector('mini-resume');
+    userstats.opened = !userstats.opened;
+});
 
-
-/////////////////////
 
 document.querySelector(".delete").addEventListener("click", function(e) {
 
@@ -129,9 +111,7 @@ document.querySelector(".duplicate").addEventListener("click", function(e) {
 });
 
 document.querySelector('.newtitle').addEventListener('click', function(e) {
-
 const myheading = document.querySelectorAll('mini-resume');
-
 for (let i = 0; i < myheading.length; i++){
   if (myheading[i].name == "John Appleseed"){
     myheading[i].name = "New Name";
@@ -140,43 +120,15 @@ for (let i = 0; i < myheading.length; i++){
   }
   
 }
-
 });
 
-
-
 document.querySelector('.changecolor').addEventListener('click', (e) => {
-      const colors = ["blue", "green", "pink", "red"]
+      const colors = ["blue", "green","default"];
       const randomColors = colors[Math.floor(Math.random() * colors.length)];
       document.querySelector('mini-resume').newColor = randomColors;
     });
 
-    
-
-
-
-// document.querySelector(".changecolor").addEventListener("click", function (e) {
-//   document.shadowRoot.querySelector("mini-resume").style.backgroundColor =
-//           getRandomColor();
-//         var color = getRandomColor();
-//         document.querySelector(".mainframe").style.backgroundColor = color;
-//         document.querySelector("mini-resume").style.backgroundColor = color;
-
-
-  /*const currcolor = document.querySelectorAll("mini-resume");
-  for (var i = 0; i < currcolor.length; i++){
-    if (currcolor[i].style.backgroundColor == "gray")
-    {
-      currcolor[i].style.backgroundColor = "pink";
-    }
-    else
-    {
-      currcolor[i].style.backgroundColor = "gray";
-    }
-  }
-});
-
-*/
+  
   </script>
 </body>
 
