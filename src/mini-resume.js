@@ -29,6 +29,7 @@ static get styles(){
   background: #2f3e46;
   border: 5px solid black;
   width: 300px;
+  float:left; 
 }
 :host([shadow-enable]) .mainframe{
       box-shadow: 2px 2px 15px red;
@@ -164,7 +165,6 @@ static get styles(){
   </div>
   
   <details class="info-box" .open="${this.opened}" @toggle="${this.toggleEvent}">
-
   <summary>${this.infotag}</summary>
 
   <slot name="infoslot"></slot>
