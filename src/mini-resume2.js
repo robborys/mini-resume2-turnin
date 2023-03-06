@@ -139,8 +139,8 @@ static get styles(){
 
   <div class="mainframe">
   
-  <div class="robCard">
-        <mini-resume2 shadow-enable imagetoptext="Example text" imagebottomtext="Example text">
+   <mini-resume2 
+        name="Jawn Luke" profilepicture="https://pyxis.nymag.com/v1/imgs/b25/753/ef0495a30eac613c74c5db75f6036ba7fc-14-the-room-tommy-wiseau.rsquare.w700.jpg" major="French Food" school="Morris College" new-color="blue" shadow-enable imagetoptext="oui oui" imagebottomtext="bagette">
           <div slot="infoslot">
             <ul>
               <details class="skills">
