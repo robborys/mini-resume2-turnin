@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import "@lrnwebcomponents/meme-maker/meme-maker.js";
+import "mini-resume2/src/mini-resume2.js";
 
 //const profpic = new URL('../Desktop/prof-pic.png', import.meta.url).href;
 
@@ -138,38 +139,25 @@ static get styles(){
 
   <div class="mainframe">
   
-  <div class="name-header">
-    <h1>${this.name}</h1>
-  </div>
-
-  <div class="profilepic-box">
-    <div class="profilepic">
-    <meme-maker 
-    image-url=${this.profilepicture}
-    top-text=${this.imagetoptext} 
-    bottom-text=${this.imagebottomtext}>
-  </meme-maker>
-    </div>
-  </div>
-
-
-  <div class="school-box">
-    
-    <div class="user-major">
-      <h2>${this.major}</h2>
-    </div>
-    
-    <div class="user-school">
-      <h2>${this.school}</h2>
-    </div>
-  </div>
-  
-  <details class="info-box" .open="${this.opened}" @toggle="${this.toggleEvent}">
-  <summary>${this.infotag}</summary>
-
-  <slot name="infoslot"></slot>
-
-  </details>
+  <div class="robCard">
+        <mini-resume2 shadow-enable imagetoptext="Example text" imagebottomtext="Example text">
+          <div slot="infoslot">
+            <ul>
+              <details class="skills">
+                <summary>Skills</summary>
+                <li>skills go here</li>
+              </details>
+              <details class="exp">
+                <summary>Work Experience</summary>
+                <li>work experince goes here</li>
+              </details>
+              <details class="course">
+                <summary>Relevant Course Work</summary>
+                <li>relevant coursework goes here</li>
+              </details>
+            </ul>
+          </div>
+        </mini-resume2>
   
 </div>
 
